@@ -1056,7 +1056,7 @@ audio {
 	100% {
 		-ms-transform:translate(0px,0px);
 	}
-}o
+}
 @keyframes bannar_come {
 	0%{
 		transform:translate(0px,-1000px);
@@ -1113,6 +1113,9 @@ audio {
 }
 #b7,#b77{
 	background-image: url('b7.png');
+}
+#b8,#b88{
+	background-image: url('b8.png');
 }
 .balloons-rotate-behaviour-one {
 	-webkit-animation: balloons_rotate_one linear 10s infinite;
@@ -1268,8 +1271,9 @@ audio {
 	margin-top: 50px;
 }
 .message {
-	margin-top: 200px;
+	margin-top: 280px;
 	display: none;
+	text-align: center;
 }
 .message p {
 	font-family: 'Signika', sans-serif;
@@ -1300,6 +1304,30 @@ audio {
         background-color: #466baf;
     }
 
+    .cake {
+    width: 170px;          /* adjust size as you like */
+    height: 200px;         /* keep it roughly square */
+    margin: 100px auto 0;
+    background-image: url('cake.png');
+    background-size: contain;   /* important: scale to fit */
+    background-repeat: no-repeat;
+    background-position: center center; /* center image */
+    display: none;
+}
+    .fuego {
+    display: none;   /* fire is hidden when cake appears */
+}
+/* Add this new CSS block to your stylesheet.css */
+    .sub-bannar {
+    /* A bold, modern font */
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 800; /* Extra bold */
+    color: #FFB6C1; /* A light pink color */
+	font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
 
 
     /*controlling tablet width*/
@@ -1308,3 +1336,7 @@ audio {
     		-webkit-transform: scale(0.9);
     	}
     }*/
+
+	/* ADD THIS TO YOUR stylesheet.css FILE */ /* Cake container with emoji cake image */ .cake-container { position: relative; width: 200px; height: 200px; margin: 200px auto 0; display: none; } .cake-image { width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; background-position: center; } 
+	/* Fire animation positioned on top of cake */ .fire { position: absolute; top:-20px; left: 50%; transform: translateX(-50%); width: 30px; height: 40px; display: none; z-index: 1000; } .fire.active { display: block; animation: flicker 0.3s ease-in-out infinite alternate; } .flame { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 20px; height: 30px; background: radial-gradient(ellipse at center, #fff700 0%, #ff8c00 20%, #ff4500 40%, rgba(255, 69, 0, 0.5) 70%, transparent 100%); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; animation: flame-wave 0.2s ease-in-out infinite alternate; } .flame::before { content: ''; position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 10px; height: 15px; background: radial-gradient(ellipse at center, #ffffff 0%, #fff700 30%, transparent 70%); border-radius: 50%; animation: inner-flame 0.15s ease-in-out infinite alternate; } .flame::after { content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 35px; height: 20px; background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.4) 0%, transparent 70%); border-radius: 50%; animation: glow 0.3s ease-in-out infinite alternate; } @keyframes flicker { 0% { opacity: 1; transform: translateX(-50%) scale(1); } 50% { opacity: 0.95; transform: translateX(-50%) scale(1.02, 0.98); } 100% { opacity: 1; transform: translateX(-50%) scale(0.98, 1.02); } } @keyframes flame-wave { 0% { transform: translateX(-50%) scaleY(1) scaleX(1); } 100% { transform: translateX(-50%) scaleY(1.1) scaleX(0.95); } } @keyframes inner-flame { 0% { transform: translateX(-50%) scale(1); opacity: 1; } 100% { transform: translateX(-50%) scale(1.1); opacity: 0.9; } } @keyframes glow { 0% { opacity: 0.5; transform: translateX(-50%) scale(1); } 100% { opacity: 0.8; transform: translateX(-50%) scale(1.1); } } .sparkle { position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%; animation: sparkle-float 1.5s ease-in-out infinite; } .sparkle:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; } .sparkle:nth-child(2) { top: 15%; left: 70%; animation-delay: 0.3s; } .sparkle:nth-child(3) { top: 30%; left: 50%; animation-delay: 0.6s; } @keyframes sparkle-float { 0% { opacity: 0; transform: translateY(0); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateY(-10px); } } /* ============================================================= REPLACE YOUR effect.js cake_fadein AND light_candle HANDLERS WITH THIS CODE: ============================================================= */ /* $('#cake_fadein').click(function(){ $('#cakeContainer').fadeIn('slow'); // Show cake container without fire $('#candleFire').removeClass('active'); // Make sure fire is off $(this).fadeOut('slow').delay(3000).promise().done(function(){ $('#light_candle').fadeIn('slow'); }); }); $('#light_candle').click(function(){ $('#candleFire').addClass('active').fadeIn('slow'); // Activate and show fire $(this).fadeOut('slow').promise().done(function(){ $('#wish_message').fadeIn('slow'); }); }); */ /* ============================================================= REPLACE YOUR index.html CAKE SECTION WITH THIS: ============================================================= */ /*
+*/
