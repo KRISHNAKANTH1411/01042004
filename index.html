@@ -1,199 +1,1587 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>Happy Birthday Priyo</title>
+	<title>Happy Birthday DORAMII 🎀</title>
 	<meta charset="UTF-8" />
-	
-    <meta property="og:type" content="E-Greeting" />
-    <meta property="og:image" content="favicon.ico" />
-    <meta property="og:description" content="Wish you a very Happy Birthday">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta property="og:type" content="E-Greeting" />
+	<meta property="og:description" content="Happy Birthday 🎀 DORAMII 🎀" />
+	<meta name="description" content="A special birthday greeting for DORAMII — wishing you the most magical day 🌸" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap"
+		rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Signika:wght@400;700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="stylesheet.css">
-	<link rel="stylesheet" type="text/css" href="loading.css">
-	<link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet/less" href="cake.less">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
 
 	<style>
-    .bannar {
-    font-family: 'Montserrat', sans-serif;  /* modern bold font */
-    font-size: 38px;
-    color: #1E90FF;font-style: italic;
-    font-style: italic;
-    font-weight: 700;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);  /* optional shadow */
-    text-align: center;
-}
-  </style>
+		/* ── RESET & TOKENS ── */
+		:root {
+			--pink: #f7b8c8;
+			--lavender: #d5b8f7;
+			--mint: #b8f0e6;
+			--peach: #ffd6b8;
+			--cream: #fff8f2;
+			--blush: #ffe4ee;
+			--rose: #e8729a;
+			--purple: #9b72cf;
+			--text: #5a3a4a;
+			--soft-text: #9a7a8a;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* ── BACKGROUND (from new) ── */
+		body {
+			background: #000;
+			background-attachment: fixed;
+			font-family: 'Nunito', sans-serif;
+			color: var(--text);
+			overflow: hidden;
+			height: 100vh;
+			margin: 0;
+			transition: background 8s ease-in-out;
+		}
+
+		body.peach {
+			background: linear-gradient(135deg, #fff0f5 0%, #ffe4ee 50%, #fff0f5 100%) !important;
+		}
+
+		body.peach-after {
+			animation: pastelAlive 8s linear infinite;
+		}
+
+		@keyframes pastelAlive {
+			0% {
+				background: linear-gradient(135deg, #fff0f5, #ffe4ee, #f5eeff);
+			}
+
+			25% {
+				background: linear-gradient(135deg, #f5eeff, #fff0f5, #eefff9);
+			}
+
+			50% {
+				background: linear-gradient(135deg, #eefff9, #f5eeff, #ffe4ee);
+			}
+
+			75% {
+				background: linear-gradient(135deg, #ffe4ee, #eefff9, #fff0f5);
+			}
+
+			100% {
+				background: linear-gradient(135deg, #fff0f5, #ffe4ee, #f5eeff);
+			}
+		}
+
+		/* ── PARTICLES ── */
+		#particles {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			z-index: 0;
+			opacity: 0;
+			transition: opacity 3s ease;
+		}
+
+		.particle {
+			position: absolute;
+			font-size: 18px;
+			opacity: 0;
+			animation: floatUp linear infinite;
+		}
+
+		@keyframes floatUp {
+			0% {
+				opacity: 0;
+				transform: translateY(0) rotate(0deg);
+			}
+
+			10% {
+				opacity: 0.7;
+			}
+
+			90% {
+				opacity: 0.7;
+			}
+
+			100% {
+				opacity: 0;
+				transform: translateY(-100vh) rotate(360deg);
+			}
+		}
+
+		/* ── RIBBON CORNERS ── */
+		.ribbon-corner {
+			position: fixed;
+			font-size: 30px;
+			opacity: 0;
+			pointer-events: none;
+			z-index: 0;
+			transition: opacity 3s ease;
+		}
+
+		.ribbon-corner.tl {
+			top: 10px;
+			left: 10px;
+		}
+
+		.ribbon-corner.tr {
+			top: 10px;
+			right: 10px;
+			transform: scaleX(-1);
+		}
+
+		.ribbon-corner.bl {
+			bottom: 80px;
+			left: 10px;
+			transform: scaleY(-1);
+		}
+
+		.ribbon-corner.br {
+			bottom: 80px;
+			right: 10px;
+			transform: scale(-1, -1);
+		}
+
+		/* ── LOADING (new style) ── */
+		#loading-screen {
+			position: fixed;
+			inset: 0;
+			background: #000;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			z-index: 9999;
+			transition: opacity 1.5s ease;
+		}
+
+		.load-text {
+			font-family: 'Playfair Display', serif;
+			font-size: 26px;
+			color: var(--rose);
+			margin-bottom: 24px;
+			animation: pulse 1.5s ease-in-out infinite;
+		}
+
+		@keyframes pulse {
+
+			0%,
+			100% {
+				opacity: 0.5;
+			}
+
+			50% {
+				opacity: 1;
+			}
+		}
+
+		.loader-dots {
+			display: flex;
+			gap: 10px;
+		}
+
+		.loader-dots span {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			animation: bounce 0.8s ease-in-out infinite;
+		}
+
+		.loader-dots span:nth-child(1) {
+			background: var(--pink);
+			animation-delay: 0s;
+		}
+
+		.loader-dots span:nth-child(2) {
+			background: var(--lavender);
+			animation-delay: 0.15s;
+		}
+
+		.loader-dots span:nth-child(3) {
+			background: var(--mint);
+			animation-delay: 0.3s;
+		}
+
+		@keyframes bounce {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-14px);
+			}
+		}
+
+		/* ── MAIN CONTAINER ── */
+		#main-container {
+			display: none;
+			position: relative;
+			z-index: 1;
+		}
+
+		/* ── BULBS (old image style) ── */
+		.bulb {
+			width: 50px;
+			height: 50px;
+			margin: 0 auto;
+			background-repeat: no-repeat;
+			background-position: center 0px;
+			background-size: 50px 50px;
+		}
+
+		.bulb-holder {
+			height: 70px;
+			padding: 0;
+		}
+
+		/* bulb glow-on */
+		.bulb-glow-yellow {
+			background-image: url('bulb_yellow.png');
+			animation: bulb_glow_yellow linear 5s;
+		}
+
+		@keyframes bulb_glow_yellow {
+			0% {
+				background-image: url('bulb.png');
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				background-image: url('bulb_yellow.png');
+				opacity: 1;
+			}
+		}
+
+		.bulb-glow-red {
+			background-image: url('bulb_red.png');
+			animation: bulb_glow_red linear 5s;
+		}
+
+		@keyframes bulb_glow_red {
+			0% {
+				background-image: url('bulb.png');
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				background-image: url('bulb_red.png');
+				opacity: 1;
+			}
+		}
+
+		.bulb-glow-blue {
+			background-image: url('bulb_blue.png');
+			animation: bulb_glow_blue linear 5s;
+		}
+
+		@keyframes bulb_glow_blue {
+			0% {
+				background-image: url('bulb.png');
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				background-image: url('bulb_blue.png');
+				opacity: 1;
+			}
+		}
+
+		.bulb-glow-green {
+			background-image: url('bulb_green.png');
+			animation: bulb_glow_green linear 5s;
+		}
+
+		@keyframes bulb_glow_green {
+			0% {
+				background-image: url('bulb.png');
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				background-image: url('bulb_green.png');
+				opacity: 1;
+			}
+		}
+
+		.bulb-glow-pink {
+			background-image: url('bulb_pink.png');
+			animation: bulb_glow_pink linear 5s;
+		}
+
+		@keyframes bulb_glow_pink {
+			0% {
+				background-image: url('bulb.png');
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				background-image: url('bulb_pink.png');
+				opacity: 1;
+			}
+		}
+
+		.bulb-glow-orange {
+			background-image: url('bulb_orange.png');
+			animation: bulb_glow_orange linear 5s;
+		}
+
+		@keyframes bulb_glow_orange {
+			0% {
+				background-image: url('bulb.png');
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				background-image: url('bulb_orange.png');
+				opacity: 1;
+			}
+		}
+
+		/* bulb glow-after (blinking) */
+		.bulb-glow-yellow-after {
+			background-image: url('bulb_yellow.png');
+			animation: bulb_blink_yellow linear 1s infinite;
+		}
+
+		@keyframes bulb_blink_yellow {
+			0% {
+				background-image: url('bulb.png');
+			}
+
+			50% {
+				background-image: url('bulb_yellow.png');
+			}
+
+			100% {
+				background-image: url('bulb.png');
+			}
+		}
+
+		.bulb-glow-red-after {
+			background-image: url('bulb_red.png');
+			animation: bulb_blink_red linear 1.2s infinite;
+		}
+
+		@keyframes bulb_blink_red {
+			0% {
+				background-image: url('bulb.png');
+			}
+
+			50% {
+				background-image: url('bulb_red.png');
+			}
+
+			100% {
+				background-image: url('bulb.png');
+			}
+		}
+
+		.bulb-glow-blue-after {
+			background-image: url('bulb_blue.png');
+			animation: bulb_blink_blue linear 1.4s infinite;
+		}
+
+		@keyframes bulb_blink_blue {
+			0% {
+				background-image: url('bulb.png');
+			}
+
+			50% {
+				background-image: url('bulb_blue.png');
+			}
+
+			100% {
+				background-image: url('bulb.png');
+			}
+		}
+
+		.bulb-glow-green-after {
+			background-image: url('bulb_green.png');
+			animation: bulb_blink_green linear 1.8s infinite;
+		}
+
+		@keyframes bulb_blink_green {
+			0% {
+				background-image: url('bulb.png');
+			}
+
+			50% {
+				background-image: url('bulb_green.png');
+			}
+
+			100% {
+				background-image: url('bulb.png');
+			}
+		}
+
+		.bulb-glow-pink-after {
+			background-image: url('bulb_pink.png');
+			animation: bulb_blink_pink linear 2s infinite;
+		}
+
+		@keyframes bulb_blink_pink {
+			0% {
+				background-image: url('bulb.png');
+			}
+
+			50% {
+				background-image: url('bulb_pink.png');
+			}
+
+			100% {
+				background-image: url('bulb.png');
+			}
+		}
+
+		.bulb-glow-orange-after {
+			background-image: url('bulb_orange.png');
+			animation: bulb_blink_orange linear 2.2s infinite;
+		}
+
+		@keyframes bulb_blink_orange {
+			0% {
+				background-image: url('bulb.png');
+			}
+
+			50% {
+				background-image: url('bulb_orange.png');
+			}
+
+			100% {
+				background-image: url('bulb.png');
+			}
+		}
+
+		/* ── BANNER (new — Playfair shimmer) ── */
+		.banner-wrap {
+			text-align: center;
+			padding: 80px 16px 8px;
+			transform: translateY(-500px);
+			transition: none;
+			margin-bottom: 280px;
+		}
+
+		.banner-wrap.banner-come {
+			animation: bannerDrop 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+		}
+
+		@keyframes bannerDrop {
+			0% {
+				transform: translateY(-500px);
+				opacity: 0;
+			}
+
+			60% {
+				transform: translateY(20px);
+				opacity: 1;
+			}
+
+			80% {
+				transform: translateY(-10px);
+			}
+
+			100% {
+				transform: translateY(0px);
+				opacity: 1;
+			}
+		}
+
+		.banner-title {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(30px, 7vw, 62px);
+			background: linear-gradient(135deg, #e8729a, #9b72cf, #6ab8a0);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			line-height: 1.25;
+			background-size: 200% 200%;
+			animation: shimmer 3s ease-in-out infinite;
+		}
+
+		@keyframes shimmer {
+			0% {
+				background-position: 0% 50%;
+			}
+
+			50% {
+				background-position: 100% 50%;
+			}
+
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+
+		.banner-sub {
+			font-family: 'Nunito', sans-serif;
+			font-size: 17px;
+			color: var(--soft-text);
+			margin-top: 6px;
+			font-weight: 300;
+			font-style: italic;
+		}
+
+		/* ── AUDIO ── */
+		audio {
+			display: none;
+			border-radius: 30px;
+			filter: hue-rotate(300deg) saturate(1.5);
+		}
+
+		/* ── BALLOONS (old image style with b1-b7.png) ── */
+		.balloons {
+			position: fixed;
+			bottom: -200px;
+			opacity: 0.7;
+			z-index: 99;
+			width: 90px;
+			height: 165px;
+			background-repeat: no-repeat;
+			background-size: 90px 165px;
+		}
+
+		.balloons h2 {
+			text-transform: uppercase;
+			font-family: 'Signika', sans-serif;
+			font-size: 50px;
+			color: #BF4136;
+			text-shadow: 5px 5px 5px #FFF;
+			display: none;
+			text-align: center;
+			padding-top: 20px;
+			margin: 0;
+		}
+
+		#b1,
+		#b11 {
+			background-image: url('b1.png');
+		}
+
+		#b2,
+		#b22 {
+			background-image: url('b2.png');
+		}
+
+		#b3,
+		#b33 {
+			background-image: url('b3.png');
+		}
+
+		#b4,
+		#b44 {
+			background-image: url('b4.png');
+		}
+
+		#b5,
+		#b55 {
+			background-image: url('b5.png');
+		}
+
+		#b6,
+		#b66 {
+			background-image: url('b6.png');
+		}
+
+		#b7,
+		#b77 {
+			background-image: url('b7.png');
+		}
+
+		.balloons-rotate-behaviour-one {
+			animation: balloons_rotate_one linear 10s infinite;
+			transform: rotate(30deg);
+		}
+
+		@keyframes balloons_rotate_one {
+			0% {
+				transform: rotate(30deg);
+			}
+
+			50% {
+				transform: rotate(-30deg);
+			}
+
+			100% {
+				transform: rotate(30deg);
+			}
+		}
+
+		.balloons-rotate-behaviour-two {
+			animation: balloons_rotate_two linear 10s infinite;
+			transform: rotate(-20deg);
+		}
+
+		@keyframes balloons_rotate_two {
+			0% {
+				transform: rotate(-20deg);
+			}
+
+			50% {
+				transform: rotate(20deg);
+			}
+
+			100% {
+				transform: rotate(-20deg);
+			}
+		}
+
+		/* Balloon border drop animation */
+		.balloon-border {
+			position: fixed;
+			top: 100%;
+			opacity: 0.5;
+			z-index: 9999;
+			width: 100%;
+		}
+
+		/* ── NEW CSS CAKE ── */
+		#cake-section {
+			display: none;
+			justify-content: center;
+			padding: 20px 0 10px;
+		}
+
+		.cake-wrap {
+			position: relative;
+			width: 180px;
+			user-select: none;
+		}
+
+		.cake-tier-bottom {
+			width: 180px;
+			height: 70px;
+			background: linear-gradient(135deg, #ffd6e8, #ffb3cc);
+			border-radius: 12px 12px 4px 4px;
+			margin: 0 auto;
+			position: relative;
+			box-shadow: inset 0 -4px 12px rgba(0, 0, 0, 0.08);
+			overflow: hidden;
+		}
+
+		.cake-tier-bottom::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 18px;
+			background: repeating-linear-gradient(90deg, #f472b6 0px, #f472b6 8px, #ffd6e8 8px, #ffd6e8 16px);
+			opacity: 0.5;
+		}
+
+		.cake-deco-bottom {
+			position: absolute;
+			top: 10px;
+			left: 0;
+			right: 0;
+			display: flex;
+			justify-content: space-around;
+			padding: 0 16px;
+		}
+
+		.cake-dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: white;
+			opacity: 0.7;
+		}
+
+		.cake-tier-mid {
+			width: 140px;
+			height: 55px;
+			background: linear-gradient(135deg, #e8d5ff, #d5b8f7);
+			border-radius: 10px 10px 3px 3px;
+			margin: 0 auto;
+			position: relative;
+			box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.08);
+			overflow: hidden;
+		}
+
+		.cake-tier-mid::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 14px;
+			background: repeating-linear-gradient(90deg, #a78bfa 0px, #a78bfa 7px, #e8d5ff 7px, #e8d5ff 14px);
+			opacity: 0.5;
+		}
+
+		.cake-tier-top {
+			width: 100px;
+			height: 42px;
+			background: linear-gradient(135deg, #b8f0e6, #8dd9ce);
+			border-radius: 8px 8px 3px 3px;
+			margin: 0 auto;
+			position: relative;
+			box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.08);
+			overflow: hidden;
+		}
+
+		.cake-tier-top::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 10px;
+			background: repeating-linear-gradient(90deg, #6dd5c0 0px, #6dd5c0 6px, #b8f0e6 6px, #b8f0e6 12px);
+			opacity: 0.5;
+		}
+
+		.frosting-top {
+			text-align: center;
+			font-size: 12px;
+			letter-spacing: 1px;
+			color: rgba(255, 255, 255, 0.95);
+			font-weight: 700;
+			padding-top: 8px;
+			font-family: 'Nunito', sans-serif;
+		}
+
+		/* Candles */
+		.candle-area {
+			display: flex;
+			justify-content: center;
+			gap: 14px;
+			position: relative;
+			margin-bottom: -2px;
+		}
+
+		.candle {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.flame-new {
+			width: 14px;
+			height: 22px;
+			opacity: 0;
+			position: relative;
+			transition: opacity 0.5s ease;
+		}
+
+		.flame-new.lit {
+			opacity: 1;
+		}
+
+		.flame-inner-new {
+			width: 10px;
+			height: 18px;
+			background: linear-gradient(to top, #ff9800, #ffeb3b, #fff9c4);
+			border-radius: 50% 50% 30% 30%;
+			margin: 0 auto;
+			animation: flicker 0.5s ease-in-out infinite alternate;
+			box-shadow: 0 0 12px 4px rgba(255, 200, 0, 0.6);
+		}
+
+		@keyframes flicker {
+			0% {
+				transform: scaleX(1) scaleY(1);
+			}
+
+			100% {
+				transform: scaleX(0.85) scaleY(1.1) rotate(3deg);
+			}
+		}
+
+		.candle-body {
+			width: 10px;
+			height: 30px;
+			border-radius: 4px;
+		}
+
+		.candle:nth-child(1) .candle-body {
+			background: linear-gradient(to bottom, #ffb3c6, #ff8fab);
+		}
+
+		.candle:nth-child(2) .candle-body {
+			background: linear-gradient(to bottom, #c9b8ff, #a78bfa);
+		}
+
+		.candle:nth-child(3) .candle-body {
+			background: linear-gradient(to bottom, #b8f0e6, #6dd5c0);
+		}
+
+		.candle-wick {
+			width: 2px;
+			height: 6px;
+			background: #5a3a4a;
+			margin-bottom: -2px;
+		}
+
+		/* ── WISH TEXT ── */
+		#wish-display {
+			display: none;
+			text-align: center;
+			padding: 20px 16px;
+		}
+
+		.wish-text {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(24px, 5vw, 40px);
+			color: var(--rose);
+			font-style: italic;
+			animation: sparkleText 2s ease-in-out infinite;
+		}
+
+		@keyframes sparkleText {
+
+			0%,
+			100% {
+				text-shadow: 0 0 10px rgba(232, 114, 154, 0.4);
+			}
+
+			50% {
+				text-shadow: 0 0 30px rgba(232, 114, 154, 0.9), 0 0 60px rgba(155, 114, 207, 0.5);
+			}
+		}
+
+		/* ── MESSAGE ── */
+		.message {
+			display: none;
+			text-align: center;
+			padding: 50px 16px 160px;
+			max-width: 520px;
+			margin: 0 auto;
+		}
+
+		.message p {
+			font-family: 'Playfair Display', serif;
+			font-size: 30px;
+			font-weight: bold;
+			display: none;
+			line-height: 1.5;
+			padding: 4px 0;
+			background: linear-gradient(135deg, #e8729a, #9b72cf, #6ab8a0);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			background-size: 200% 200%;
+			animation: shimmer 3s ease-in-out infinite;
+			text-shadow: none;
+			text-transform: none;
+		}
+
+		.message p.highlight {
+			font-family: 'Playfair Display', serif;
+			font-size: 34px;
+			font-style: normal;
+		}
+
+		.message p.section-break {
+			font-size: 26px;
+			padding: 8px 0;
+			-webkit-text-fill-color: initial;
+			background: none;
+			animation: none;
+		}
+
+		/* ── AIRPLANES ── */
+		#airplane-container {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			z-index: 0;
+			overflow: hidden;
+		}
+
+		.plane {
+			left: 0;
+			position: absolute;
+			transform: rotate(-10deg);
+			width: 100%;
+			z-index: 1;
+		}
+
+		.plane i {
+			animation: motion linear infinite;
+			background-image: url("https://assets.codepen.io/732/plane%402x.png");
+			background-repeat: no-repeat;
+			background-size: 100%;
+			position: absolute;
+			right: 0;
+			transition: .4s ease-out;
+		}
+
+		.plane-1 {
+			top: 15vh;
+		}
+
+		.plane-1 i {
+			height: 67px;
+			width: 1171px;
+			animation-duration: 50s;
+			animation-delay: -10s;
+		}
+
+		.plane-2 {
+			top: 60vh;
+		}
+
+		.plane-2 i {
+			height: 58px;
+			width: 1007px;
+			animation-duration: 60s;
+			animation-delay: -4s;
+		}
+
+		.plane-3 {
+			top: 5vh;
+		}
+
+		.plane-3 i {
+			height: 40px;
+			width: 693px;
+			animation-duration: 75s;
+			animation-delay: -33s;
+		}
+
+		.plane-4 {
+			top: 45vh;
+		}
+
+		.plane-4 i {
+			height: 34px;
+			width: 594px;
+			animation-duration: 85s;
+			animation-delay: -50s;
+		}
+
+		.plane-5 {
+			top: 85vh;
+		}
+
+		.plane-5 i {
+			height: 31px;
+			width: 528px;
+			animation-duration: 100s;
+			animation-delay: -33s;
+		}
+
+		.plane-6 {
+			top: 35vh;
+		}
+
+		.plane-6 i {
+			height: 21px;
+			width: 363px;
+			animation-duration: 110s;
+			animation-delay: -2s;
+		}
+
+		.plane-7 {
+			top: 2vh;
+		}
+
+		.plane-7 i {
+			height: 21px;
+			width: 363px;
+			animation-duration: 125s;
+			animation-delay: 10s;
+		}
+
+		.plane-8 {
+			top: 75vh;
+		}
+
+		.plane-8 i {
+			height: 18px;
+			width: 313px;
+			animation-duration: 140s;
+			animation-delay: -60s;
+		}
+
+		.plane-9 {
+			top: 55vh;
+		}
+
+		.plane-9 i {
+			height: 14px;
+			width: 231px;
+			animation-duration: 150s;
+			animation-delay: -20s;
+		}
+
+		.plane-10 {
+			top: 95vh;
+		}
+
+		.plane-10 i {
+			height: 12px;
+			width: 197px;
+			animation-duration: 160s;
+		}
+
+		@keyframes motion {
+			0% {
+				opacity: 1;
+				transform: translateX(-101vw);
+			}
+
+			97% {
+				opacity: 1;
+			}
+
+			98% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 0;
+				transform: translateX(calc(0% + 100px));
+			}
+		}
+
+		/* ── BOTTOM BUTTON BAR ── */
+		.navbar-fixed-bottom {
+			background: transparent;
+			backdrop-filter: none;
+			border-top: none;
+		}
+
+		.btn-pastel {
+			padding: 9px 18px;
+			border: none;
+			border-radius: 30px;
+			font-family: 'Nunito', sans-serif;
+			font-size: 13px;
+			font-weight: 700;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+			color: white;
+			letter-spacing: 0.3px;
+			margin: 4px;
+		}
+
+		.btn-pastel:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+		}
+
+		.btn-pastel:active {
+			transform: translateY(0);
+		}
+
+		#turn_on {
+			background: linear-gradient(135deg, #c9b8ff, #a78bfa);
+		}
+
+		#play {
+			background: linear-gradient(135deg, #c9b8ff, #a78bfa);
+		}
+
+		#bannar_coming {
+			background: linear-gradient(135deg, #c9b8ff, #a78bfa);
+		}
+
+		#balloons_flying {
+			background: linear-gradient(135deg, #c9b8ff, #a78bfa);
+		}
+
+		#cake_fadein {
+			background: linear-gradient(135deg, #c9b8ff, #a78bfa);
+		}
+
+		#light_candle {
+			background: linear-gradient(135deg, #c9b8ff, #a78bfa);
+		}
+
+		#wish_message {
+			background: linear-gradient(135deg, #c9b8ff, #a78bfa);
+		}
+
+		#story {
+			background: linear-gradient(135deg, #c9b8ff, #a78bfa);
+		}
+
+		/* old buttons hidden by default (sequential flow) */
+		#play,
+		#bannar_coming,
+		#balloons_flying,
+		#cake_fadein,
+		#light_candle,
+		#wish_message,
+		#story {
+			display: none;
+		}
+
+		/* scrollbar */
+		::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: var(--pink);
+			border-radius: 10px;
+		}
+	</style>
 </head>
 
-<body><link rel="stylesheet" type="text/css" href="stylesheet.css">
-	<div class="loading"></div>
-	<audio class="song" controls loop>
-        <source src="hbd.mp3"></source>
-	   Your browser isn't invited for super fun audio time.
-    </audio>
-    <div class="balloons text-center" id="b1">
-    	<h2 style="color:#F2B300;">P</h2>
-    </div>
-    <div class="balloons text-center" id="b2">
-    	<h2 style="color:#0719D4;">R</h2>
-    </div>
-	<div class="balloons text-center" id="b3">
-    	<h2 style="color:#D14D39;">I</h2>
-    </div>
-	<div class="balloons text-center" id="b4">
-    	<h2 style="color:#8FAD00;">Y</h2>
-    </div>
-	<div class="balloons text-center" id="b5">
-    	<h2 style="color:#8377E4;">A</h2>
-    </div>
-    <div class="balloons text-center" id="b6">
-    	<h2 style="color:#99C96A;">N</h2>
-    </div>
-    <div class="balloons text-center" id="b7">
-    	<h2 style="color:#20CFB4;">G</h2>
-    </div>
-	<div class="balloons text-center" id="b8">
-    	<h2 style="color:#e237e2;">A</h2>
-    </div>
+<body>
 
+	<!-- PARTICLES -->
+	<div id="particles"></div>
 
-    <img src="Balloon-Border.png" width="100%" class="balloon-border">
- 
+	<!-- RIBBON CORNERS REMOVED -->
 
-	<div class="container">
-		
-		<div class="row">
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_yellow"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_red"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_blue"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_green"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_pink"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_orange"></div>
-			</div>
+	<!-- LOADING -->
+	<div id="loading-screen">
+		<div class="load-text">✨ Getting things ready ✨</div>
+		<div class="loader-dots">
+			<span></span><span></span><span></span>
 		</div>
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<img src="banner.png" class="bannar">
-				<h4 class="sub-bannar" id="subBannarText" style="color:#F4BB44; display: none;"> Dear Papaoww</h4>
-			</div>
-		</div>
-<div class="row cake-cover">
-    <div class="col-md-12 text-center">
-        <div class="cake-container" id="cakeContainer">
-            <div class="cake-image" style="background-image: url('cake.png');"></div>
-            
-            <div class="fire" id="candleFire">
-                <div class="flame">
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                    <div class="sparkle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-		<div class="row message">
-			<div class="col-md-12">
-				<p>Hey Birthday girl...</p>
-				<p>Today is...</p>
-				<p>as beautiful as other days</p>
-				<p>but you realize</p>
-				<p>Another year passes…</p>
-				<p>in a blink of the eyes</p>
-				<p><strong>However</strong></p>
-				<p>Do you know..?</p>
-				<p>today is just special to you</p>
-				<p>that's why</p>
-				<p>Let's make it...</p>
-				<p>the best celebration ever</p>
-				<p>and let me share...</p>
-				<p>a piece of happiness to you</p>
-				<p>I made all this...For you</p>
-				<p>as a birthday present to you</p>
-				<p>You're the kind of person</p>
-				<p>who walks in quietly</p>
-				<p>and suddenly everything feels better.</p>
-				<p>A day that reminds me</p>
-				<p>how lucky I am to know someone</p>
-				<p>so pure, so lovable, so full of light.</p>
-				<p>Thanks for being there</p>
-				<p>Thanks for the bond we made</p>
-				<p>Thanks for everything</p>
-				<p>I wish you all the best</p>
-				<p>May this year love you</p>
-				<p>as much as you love everyone around you.</p>
-				<p>May all your wishes come true</p>
-				<p>Remember</p>
-				<p>your ambitions</p>
-				<p>you live as a free bird...</p>
-				<p>flying in the blue sky</p>
-				<p>Now things are different...</p>
-				<p>real story of your life</p>
-				<p>is just about to begin</p>
-				<p>indeed..</p>
-				<p>but...</p>
-				<p>don't worry</p>
-				<p>because...</p>
-				<p>this year will be better</p>
-				<p>and I hope</p>
-				<p>you'll find...</p>
-				<p>happiness along the way</p>
-				<p>keep your spirit up</p>
-				<p>enjoy every single moment...</p>
-				<p>that you experience today</p>
-				<p>fill it with your most beautiful smile</p>
-				<p>and make it the best memory..</p>
-				<p>lastly...</p>
-				<p>I'd like to wish you one more time</p>
-				<p>a very happy birthday My Dear Badgirl</p>
-			</div>
-		</div>
-		<div class="navbar navbar-fixed-bottom">
-			<div class="row">
-				<div class="col-md-6 text-center col-md-offset-3">
-					<button class="btn btn-primary" id="turn_on">Turn On Lights</button>
-					<button class="btn btn-primary" id="play">BDay without music? no</button>
-					<button class="btn btn-primary" id="bannar_coming">Want Decoration</button>
-					<button class="btn btn-primary" id="balloons_flying">Fly With Balloons</button>
-					<button class="btn btn-primary" id="cake_fadein">Most Delicious Cake Ever</button>
-					<button class="btn btn-primary" id="light_candle"> Spark a candle</button>
-					<button class="btn btn-primary" id="wish_message">Happy Birthday</button>
-					<button class="btn btn-primary" id="story">A message for you</button>
-					</div>
-			</div>
-			</div>
-
-
 	</div>
+
+	<!-- AUDIO -->
+	<audio class="song" controls loop>
+		<source src="hbd.mp3">
+		Your browser doesn't support audio.
+	</audio>
+
+	<!-- FLYING AIRPLANES -->
+	<div id="airplane-container" class="pen-container">
+		<div class="plane plane-1"><i></i></div>
+		<div class="plane plane-2"><i></i></div>
+		<div class="plane plane-3"><i></i></div>
+		<div class="plane plane-4"><i></i></div>
+		<div class="plane plane-5"><i></i></div>
+		<div class="plane plane-6"><i></i></div>
+		<div class="plane plane-7"><i></i></div>
+		<div class="plane plane-8"><i></i></div>
+		<div class="plane plane-9"><i></i></div>
+		<div class="plane plane-10"><i></i></div>
+	</div>
+
+	<!-- FLYING BALLOONS (old image style) — spelling D O R A M I I -->
+	<div class="balloons text-center" id="b1">
+		<h2 style="color:#F2B300;">C</h2>
+	</div>
+	<div class="balloons text-center" id="b2">
+		<h2 style="color:#0719D4;">H</h2>
+	</div>
+	<div class="balloons text-center" id="b3">
+		<h2 style="color:#D14D39;">R</h2>
+	</div>
+	<div class="balloons text-center" id="b4">
+		<h2 style="color:#8FAD00;">I</h2>
+	</div>
+	<div class="balloons text-center" id="b5">
+		<h2 style="color:#8377E4;">S</h2>
+	</div>
+	<div class="balloons text-center" id="b6">
+		<h2 style="color:#99C96A;">T</h2>
+	</div>
+	<div class="balloons text-center" id="b7">
+		<h2 style="color:#20CFB4;">Y</h2>
+	</div>
+
+	<!-- Balloon border drop -->
+	<img src="Balloon-Border.png" width="100%" class="balloon-border">
+
+	<!-- MAIN CONTAINER -->
+	<div id="main-container">
+		<div class="container">
+
+			<!-- LIGHTS ROW (flex container full width touching top) -->
+			<div
+				style="display: flex; justify-content: space-between; width: 100%; position: absolute; top: 0; left: 0; padding: 0;">
+				<div class="bulb-holder" style="flex: 1;">
+					<div class="bulb" id="bulb_yellow"></div>
+				</div>
+				<div class="bulb-holder" style="flex: 1;">
+					<div class="bulb" id="bulb_red"></div>
+				</div>
+				<div class="bulb-holder" style="flex: 1;">
+					<div class="bulb" id="bulb_blue"></div>
+				</div>
+				<div class="bulb-holder" style="flex: 1;">
+					<div class="bulb" id="bulb_green"></div>
+				</div>
+				<div class="bulb-holder" style="flex: 1;">
+					<div class="bulb" id="bulb_pink"></div>
+				</div>
+				<div class="bulb-holder" style="flex: 1;">
+					<div class="bulb" id="bulb_orange"></div>
+				</div>
+
+				<!-- Extra bulbs to fill space smoothly -->
+				<div class="bulb-holder" style="flex: 1;">
+					<div class="bulb" id="bulb_yellow2"></div>
+				</div>
+				<div class="bulb-holder" style="flex: 1;">
+					<div class="bulb" id="bulb_blue2"></div>
+				</div>
+				<div class="bulb-holder" style="flex: 1;">
+					<div class="bulb" id="bulb_red2"></div>
+				</div>
+			</div>
+
+			<!-- BANNER (new Playfair shimmer, hidden off-screen initially) -->
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="banner-wrap" id="banner-wrap">
+						<div class="banner-title">Happy Birthday<br>🎀 DORAMII 🎀</div>
+						<div class="banner-sub">wishing you the softest, most magical day 🌸</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- NEW CSS CAKE -->
+			<div id="cake-section">
+				<div class="cake-wrap">
+					<div class="candle-area">
+						<div class="candle">
+							<div class="flame-new">
+								<div class="flame-inner-new"></div>
+							</div>
+							<div class="candle-wick"></div>
+							<div class="candle-body"></div>
+						</div>
+						<div class="candle">
+							<div class="flame-new">
+								<div class="flame-inner-new"></div>
+							</div>
+							<div class="candle-wick"></div>
+							<div class="candle-body"></div>
+						</div>
+						<div class="candle">
+							<div class="flame-new">
+								<div class="flame-inner-new"></div>
+							</div>
+							<div class="candle-wick"></div>
+							<div class="candle-body"></div>
+						</div>
+					</div>
+					<div class="cake-tier-top">
+						<div class="frosting-top"></div>
+					</div>
+					<div class="cake-tier-mid"></div>
+					<div class="cake-tier-bottom">
+						<div class="cake-deco-bottom">
+							<div class="cake-dot"></div>
+							<div class="cake-dot"></div>
+							<div class="cake-dot"></div>
+							<div class="cake-dot"></div>
+							<div class="cake-dot"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- MESSAGE (new text, shown one line at a time) -->
+			<div class="row message">
+				<div class="col-md-12">
+					<p class="section-break">🌸</p>
+					<p>Hey, birthday girl…</p>
+					<p>Today the whole world</p>
+					<p>got a little brighter</p>
+					<p>because it's <em>your</em> day.</p>
+					<p class="section-break">💫</p>
+					<p>Another year, another chapter </p>
+					<p>and honestly?</p>
+					<p>You just keep getting</p>
+					<p class="highlight">more wonderful.</p>
+					<p class="section-break">🎀</p>
+					<p>You have this rare kind of warmth</p>
+					<p>that makes people feel seen,</p>
+					<p>feel safe,</p>
+					<p>feel like themselves.</p>
+					<p>That's not nothing </p>
+					<p class="highlight">that's everything.</p>
+					<p class="section-break">🌷</p>
+					<p>I made all of this</p>
+					<p>just to say</p>
+					<p>you deserve a day</p>
+					<p>as beautiful as you are.</p>
+					<p class="section-break">✨</p>
+					<p>May this year bring you</p>
+					<p>all the softness you give others,</p>
+					<p>all the joy you deserve,</p>
+					<p>all the dreams you've been saving</p>
+					<p>for the right moment </p>
+					<p class="highlight">this is that moment.</p>
+					<p class="section-break">💕</p>
+					<p>Keep shining, keep laughing,</p>
+					<p>keep being exactly</p>
+					<p>who you are.</p>
+					<p>The world is genuinely better</p>
+					<p>with you in it.</p>
+					<p class="section-break">🎂</p>
+					<p class="highlight">Happy Birthday, CHUTTI PONNU.</p>
+					<p>This one's all for you <span style="-webkit-text-fill-color: initial;">🎀</span></p>
+				</div>
+			</div>
+
+			<!-- BUTTON BAR -->
+			<div class="navbar navbar-fixed-bottom">
+				<div class="row">
+					<div class="col-md-6 text-center col-md-offset-3" style="padding: 10px 0;">
+						<button class="btn-pastel" id="turn_on">Shine Bright</button>
+						<button class="btn-pastel" id="play">Feel The Vibe</button>
+						<button class="btn-pastel" id="bannar_coming">Your Day Begins</button>
+						<button class="btn-pastel" id="balloons_flying">Ta-Da Moment</button>
+						<button class="btn-pastel" id="cake_fadein">Something Sweet</button>
+						<button class="btn-pastel" id="light_candle">Blow Me Away</button>
+						<button class="btn-pastel" id="wish_message">Birthday Magic</button>
+						<button class="btn-pastel" id="story">Words From Heart</button>
+					</div>
+				</div>
+			</div>
+
+		</div><!-- /.container -->
+	</div><!-- /#main-container -->
+
+	<!-- jQuery + Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	<script>
+		// ── PARTICLES
+		const emojis = ['🌸', '✨', '💕', '🎀', '🌷', '⭐', '💫', '🩷', '🌼', '💗'];
+		const pCont = document.getElementById('particles');
+		for (let i = 0; i < 28; i++) {
+			const el = document.createElement('div');
+			el.className = 'particle';
+			el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+			el.style.left = Math.random() * 100 + 'vw';
+			el.style.animationDuration = (7 + Math.random() * 10) + 's';
+			el.style.animationDelay = (Math.random() * 12) + 's';
+			el.style.fontSize = (13 + Math.random() * 14) + 'px';
+			pCont.appendChild(el);
+		}
+
+		// ── LOADING → MAIN
+		$(window).on('load', function () {
+			setTimeout(function () {
+				const ls = document.getElementById('loading-screen');
+				ls.style.opacity = '0';
+				setTimeout(function () {
+					ls.style.display = 'none';
+					document.getElementById('main-container').style.display = 'block';
+				}, 800);
+			}, 1800);
+		});
+
+		$(document).ready(function () {
+			var vw;
+
+			// Resize handler
+			$(window).resize(function () {
+				vw = $(window).width() / 2;
+				$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
+				repositionBalloons();
+			});
+
+			function repositionBalloons() {
+				vw = $(window).width() / 2;
+				var offsets = [-330, -220, -110, 0, 110, 220, 330];
+				var ids = ['#b11', '#b22', '#b33', '#b44', '#b55', '#b66', '#b77'];
+				ids.forEach(function (id, i) {
+					$(id).animate({ top: 230, left: vw + offsets[i] }, 500);
+				});
+			}
+
+			// ── 1. TURN ON LIGHTS
+			$('#turn_on').click(function () {
+				$('#particles').css('opacity', '1');
+				$('.ribbon-corner').css('opacity', '0.35');
+				$('#bulb_yellow, #bulb_yellow2').addClass('bulb-glow-yellow');
+				$('#bulb_red, #bulb_red2').addClass('bulb-glow-red');
+				$('#bulb_blue, #bulb_blue2').addClass('bulb-glow-blue');
+				$('#bulb_green, #bulb_green2').addClass('bulb-glow-green');
+				$('#bulb_pink, #bulb_pink2').addClass('bulb-glow-pink');
+				$('#bulb_orange, #bulb_orange2').addClass('bulb-glow-orange');
+				$('body').addClass('peach');
+				$(this).fadeOut('slow').delay(5000).promise().done(function () {
+					$('#play').fadeIn('slow');
+				});
+			});
+
+			// ── 2. PLAY MUSIC
+			$('#play').click(function () {
+				var audio = $('.song')[0];
+				audio.play().catch(function () { });
+				audio.style.display = 'none'; // keep hidden, autoplay
+				$('#bulb_yellow, #bulb_yellow2').addClass('bulb-glow-yellow-after');
+				$('#bulb_red, #bulb_red2').addClass('bulb-glow-red-after');
+				$('#bulb_blue, #bulb_blue2').addClass('bulb-glow-blue-after');
+				$('#bulb_green, #bulb_green2').addClass('bulb-glow-green-after');
+				$('#bulb_pink, #bulb_pink2').addClass('bulb-glow-pink-after');
+				$('#bulb_orange, #bulb_orange2').addClass('bulb-glow-orange-after');
+				$('body').addClass('peach-after');
+				$(this).fadeOut('slow').delay(6000).promise().done(function () {
+					$('#bannar_coming').fadeIn('slow');
+				});
+			});
+
+			// ── 3. SHOW BANNER
+			$('#bannar_coming').click(function () {
+				$('#banner-wrap').addClass('banner-come');
+				$(this).fadeOut('slow').delay(5000).promise().done(function () {
+					$('#balloons_flying').fadeIn('slow');
+				});
+			});
+
+			// ── BALLOON LOOP FUNCTIONS (7 balloons for DORAMII)
+			function makeLoop(id) {
+				return function loop() {
+					var randleft = $(window).width() * 0.8 * Math.random();
+					var randtop = $(window).height() * 0.5 * Math.random();
+					$(id).animate({ left: randleft, bottom: randtop }, 10000, loop);
+				};
+			}
+			var loops = ['#b1', '#b2', '#b3', '#b4', '#b5', '#b6', '#b7'].map(makeLoop);
+
+			// ── 4. FLY WITH BALLOONS
+			$('#balloons_flying').click(function () {
+				$('.balloon-border').animate({ top: -500 }, 8000);
+				$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
+				$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
+				loops.forEach(function (l) { l(); });
+
+				$('#airplane-container').fadeIn('slow'); // Trigger airplane
+
+				$(this).fadeOut('slow').delay(5000).promise().done(function () {
+					$('#cake_fadein').fadeIn('slow');
+				});
+			});
+
+			// ── 5. REVEAL CAKE
+			$('#cake_fadein').click(function () {
+				$('#cake-section').css('display', 'flex').hide().fadeIn('slow');
+				$(this).fadeOut('slow').delay(3000).promise().done(function () {
+					$('#light_candle').fadeIn('slow');
+				});
+			});
+
+			// ── 6. SPARK A CANDLE
+			$('#light_candle').click(function () {
+				document.querySelectorAll('.flame-new').forEach(function (f) { f.classList.add('lit'); });
+				$(this).fadeOut('slow').promise().done(function () {
+					$('#wish_message').fadeIn('slow');
+				});
+			});
+
+			// ── 7. HAPPY BIRTHDAY WISH
+			$('#wish_message').click(function () {
+				vw = $(window).width() / 2;
+				$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
+				// Rename IDs to fixed positions
+				['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7'].forEach(function (id, i) {
+					$('#' + id).attr('id', 'b' + [11, 22, 33, 44, 55, 66, 77][i]);
+				});
+				var offsets = [-330, -220, -110, 0, 110, 220, 330];
+				['#b11', '#b22', '#b33', '#b44', '#b55', '#b66', '#b77'].forEach(function (id, i) {
+					$(id).animate({ top: 280, left: vw + offsets[i] }, 500);
+				});
+				$('.balloons').css('opacity', '0.9');
+				$('.balloons h2').fadeIn(3000);
+
+				// confetti burst
+
+				// confetti burst
+				for (var j = 0; j < 18; j++) {
+					(function (j) {
+						setTimeout(function () {
+							var confetti = document.createElement('div');
+							confetti.className = 'particle';
+							confetti.textContent = ['🎉', '🎊', '💗', '✨', '🌸', '🎀'][Math.floor(Math.random() * 6)];
+							confetti.style.left = Math.random() * 100 + 'vw';
+							confetti.style.animationDuration = '2.5s';
+							confetti.style.animationDelay = '0s';
+							confetti.style.fontSize = '24px';
+							pCont.appendChild(confetti);
+							setTimeout(function () { confetti.remove(); }, 2800);
+						}, j * 120);
+					})(j);
+				}
+
+				$(this).fadeOut('slow').delay(3000).promise().done(function () {
+					$('#story').fadeIn('slow');
+				});
+			});
+
+			// ── 8. MESSAGE
+			$('#story').click(function () {
+				$(this).fadeOut('slow');
+				$('#cake-section').fadeOut('fast').promise().done(function () {
+					$('.message').fadeIn('slow');
+				});
+
+				var i = 1;
+				function msgLoop(i) {
+					$(".message p:nth-child(" + i + ")").fadeIn('slow').delay(1200).promise().done(function () {
+						$(".message p:nth-child(" + i + ")").fadeOut('slow').promise().done(function () {
+							i = i + 1;
+							var total = $('.message p').length;
+							if (i > total) {
+								$('.message').delay(2000).fadeOut('slow').promise().done(function () {
+									$('#cake-section').css('display', 'flex').hide().fadeIn('slow');
+								});
+							} else {
+								var delay = (i === total) ? 3500 : 1200;
+								$(".message p:nth-child(" + i + ")").fadeIn('slow').delay(delay).promise().done(function () {
+									msgLoop(i);
+								});
+							}
+						});
+					});
+				}
+				msgLoop(1);
+			});
+
+		});
+	</script>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="effect.js"></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www-google-analytics-com/analytics.js','ga');
 
-  ga('create', 'UA-58229732-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </html>
