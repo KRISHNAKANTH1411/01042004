@@ -231,261 +231,102 @@
 			z-index: 1;
 		}
 
-		/* ── BULBS (old image style) ── */
+		/* ── BULBS (Animated Image Style) ── */
 		.bulb {
 			width: 50px;
 			height: 50px;
 			margin: 0 auto;
-			background-repeat: no-repeat;
-			background-position: center 0px;
-			background-size: 50px 50px;
+			position: relative;
+			opacity: 0; /* Hidden until Shine Bright is clicked */
+			background: url("bulb.png");
+			background-size: cover;
+			background-position: center;
 		}
 
 		.bulb-holder {
 			height: 70px;
 			padding: 0;
+			position: relative;
 		}
 
-		/* bulb glow-on */
-		.bulb-glow-yellow {
-			background-image: url('bulb_yellow.png');
-			animation: bulb_glow_yellow linear 5s;
+		/* Glow Colors applied directly via filter! */
+		.bulb-glow-yellow { animation: turn_on_yellow 5s forwards; }
+		@keyframes turn_on_yellow {
+			0% { opacity: 0; }
+			15% { opacity: 1; background: url("bulb.png"); background-size: cover; background-position: center; }
+			100% { background: url("bulb_yellow.png"); background-size: cover; background-position: center; opacity: 1; }
 		}
 
-		@keyframes bulb_glow_yellow {
-			0% {
-				background-image: url('bulb.png');
-				opacity: 0;
-			}
-
-			50% {
-				opacity: 1;
-			}
-
-			100% {
-				background-image: url('bulb_yellow.png');
-				opacity: 1;
-			}
+		.bulb-glow-red { animation: turn_on_red 5s forwards; }
+		@keyframes turn_on_red {
+			0% { opacity: 0; }
+			15% { opacity: 1; background: url("bulb.png"); background-size: cover; background-position: center; }
+			100% { background: url("bulb_red.png"); background-size: cover; background-position: center; opacity: 1; }
 		}
 
-		.bulb-glow-red {
-			background-image: url('bulb_red.png');
-			animation: bulb_glow_red linear 5s;
+		.bulb-glow-blue { animation: turn_on_blue 5s forwards; }
+		@keyframes turn_on_blue {
+			0% { opacity: 0; }
+			15% { opacity: 1; background: url("bulb.png"); background-size: cover; background-position: center; }
+			100% { background: url("bulb_blue.png"); background-size: cover; background-position: center; opacity: 1; }
 		}
 
-		@keyframes bulb_glow_red {
-			0% {
-				background-image: url('bulb.png');
-				opacity: 0;
-			}
-
-			50% {
-				opacity: 1;
-			}
-
-			100% {
-				background-image: url('bulb_red.png');
-				opacity: 1;
-			}
+		.bulb-glow-green { animation: turn_on_green 5s forwards; }
+		@keyframes turn_on_green {
+			0% { opacity: 0; }
+			15% { opacity: 1; background: url("bulb.png"); background-size: cover; background-position: center; }
+			100% { background: url("bulb_green.png"); background-size: cover; background-position: center; opacity: 1; }
 		}
 
-		.bulb-glow-blue {
-			background-image: url('bulb_blue.png');
-			animation: bulb_glow_blue linear 5s;
+		.bulb-glow-pink { animation: turn_on_pink 5s forwards; }
+		@keyframes turn_on_pink {
+			0% { opacity: 0; }
+			15% { opacity: 1; background: url("bulb.png"); background-size: cover; background-position: center; }
+			100% { background: url("bulb_pink.png"); background-size: cover; background-position: center; opacity: 1; }
 		}
 
-		@keyframes bulb_glow_blue {
-			0% {
-				background-image: url('bulb.png');
-				opacity: 0;
-			}
-
-			50% {
-				opacity: 1;
-			}
-
-			100% {
-				background-image: url('bulb_blue.png');
-				opacity: 1;
-			}
+		.bulb-glow-orange { animation: turn_on_orange 5s forwards; }
+		@keyframes turn_on_orange {
+			0% { opacity: 0; }
+			15% { opacity: 1; background: url("bulb.png"); background-size: cover; background-position: center; }
+			100% { background: url("bulb_orange.png"); background-size: cover; background-position: center; opacity: 1; }
 		}
 
-		.bulb-glow-green {
-			background-image: url('bulb_green.png');
-			animation: bulb_glow_green linear 5s;
+		/* ── BLINKING BEHAVIOR (After Music Plays) ── */
+		.bulb-glow-yellow-after { animation: blink-yellow 1s linear infinite; opacity: 1; }
+		@keyframes blink-yellow {
+			0%, 100% { background: url("bulb.png"); background-size: cover; background-position: center; }
+			50% { background: url("bulb_yellow.png"); background-size: cover; background-position: center; }
 		}
 
-		@keyframes bulb_glow_green {
-			0% {
-				background-image: url('bulb.png');
-				opacity: 0;
-			}
-
-			50% {
-				opacity: 1;
-			}
-
-			100% {
-				background-image: url('bulb_green.png');
-				opacity: 1;
-			}
+		.bulb-glow-red-after { animation: blink-red 1.2s linear infinite; opacity: 1; }
+		@keyframes blink-red {
+			0%, 100% { background: url("bulb.png"); background-size: cover; background-position: center; }
+			50% { background: url("bulb_red.png"); background-size: cover; background-position: center; }
 		}
 
-		.bulb-glow-pink {
-			background-image: url('bulb_pink.png');
-			animation: bulb_glow_pink linear 5s;
+		.bulb-glow-blue-after { animation: blink-blue 1.4s linear infinite; opacity: 1; }
+		@keyframes blink-blue {
+			0%, 100% { background: url("bulb.png"); background-size: cover; background-position: center; }
+			50% { background: url("bulb_blue.png"); background-size: cover; background-position: center; }
 		}
 
-		@keyframes bulb_glow_pink {
-			0% {
-				background-image: url('bulb.png');
-				opacity: 0;
-			}
-
-			50% {
-				opacity: 1;
-			}
-
-			100% {
-				background-image: url('bulb_pink.png');
-				opacity: 1;
-			}
+		.bulb-glow-green-after { animation: blink-green 1.8s linear infinite; opacity: 1; }
+		@keyframes blink-green {
+			0%, 100% { background: url("bulb.png"); background-size: cover; background-position: center; }
+			50% { background: url("bulb_green.png"); background-size: cover; background-position: center; }
 		}
 
-		.bulb-glow-orange {
-			background-image: url('bulb_orange.png');
-			animation: bulb_glow_orange linear 5s;
+		.bulb-glow-pink-after { animation: blink-pink 2s linear infinite; opacity: 1; }
+		@keyframes blink-pink {
+			0%, 100% { background: url("bulb.png"); background-size: cover; background-position: center; }
+			50% { background: url("bulb_pink.png"); background-size: cover; background-position: center; }
 		}
 
-		@keyframes bulb_glow_orange {
-			0% {
-				background-image: url('bulb.png');
-				opacity: 0;
-			}
-
-			50% {
-				opacity: 1;
-			}
-
-			100% {
-				background-image: url('bulb_orange.png');
-				opacity: 1;
-			}
-		}
-
-		/* bulb glow-after (blinking) */
-		.bulb-glow-yellow-after {
-			background-image: url('bulb_yellow.png');
-			animation: bulb_blink_yellow linear 1s infinite;
-		}
-
-		@keyframes bulb_blink_yellow {
-			0% {
-				background-image: url('bulb.png');
-			}
-
-			50% {
-				background-image: url('bulb_yellow.png');
-			}
-
-			100% {
-				background-image: url('bulb.png');
-			}
-		}
-
-		.bulb-glow-red-after {
-			background-image: url('bulb_red.png');
-			animation: bulb_blink_red linear 1.2s infinite;
-		}
-
-		@keyframes bulb_blink_red {
-			0% {
-				background-image: url('bulb.png');
-			}
-
-			50% {
-				background-image: url('bulb_red.png');
-			}
-
-			100% {
-				background-image: url('bulb.png');
-			}
-		}
-
-		.bulb-glow-blue-after {
-			background-image: url('bulb_blue.png');
-			animation: bulb_blink_blue linear 1.4s infinite;
-		}
-
-		@keyframes bulb_blink_blue {
-			0% {
-				background-image: url('bulb.png');
-			}
-
-			50% {
-				background-image: url('bulb_blue.png');
-			}
-
-			100% {
-				background-image: url('bulb.png');
-			}
-		}
-
-		.bulb-glow-green-after {
-			background-image: url('bulb_green.png');
-			animation: bulb_blink_green linear 1.8s infinite;
-		}
-
-		@keyframes bulb_blink_green {
-			0% {
-				background-image: url('bulb.png');
-			}
-
-			50% {
-				background-image: url('bulb_green.png');
-			}
-
-			100% {
-				background-image: url('bulb.png');
-			}
-		}
-
-		.bulb-glow-pink-after {
-			background-image: url('bulb_pink.png');
-			animation: bulb_blink_pink linear 2s infinite;
-		}
-
-		@keyframes bulb_blink_pink {
-			0% {
-				background-image: url('bulb.png');
-			}
-
-			50% {
-				background-image: url('bulb_pink.png');
-			}
-
-			100% {
-				background-image: url('bulb.png');
-			}
-		}
-
-		.bulb-glow-orange-after {
-			background-image: url('bulb_orange.png');
-			animation: bulb_blink_orange linear 2.2s infinite;
-		}
-
-		@keyframes bulb_blink_orange {
-			0% {
-				background-image: url('bulb.png');
-			}
-
-			50% {
-				background-image: url('bulb_orange.png');
-			}
-
-			100% {
-				background-image: url('bulb.png');
-			}
+		.bulb-glow-orange-after { animation: blink-orange 2.2s linear infinite; opacity: 1; }
+		@keyframes blink-orange {
+			0%, 100% { background: url("bulb.png"); background-size: cover; background-position: center; }
+			50% { background: url("bulb_orange.png"); background-size: cover; background-position: center; }
 		}
 
 		/* ── BANNER (new — Playfair shimmer) ── */
