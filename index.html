@@ -42,8 +42,9 @@
 			background-attachment: fixed;
 			font-family: 'Nunito', sans-serif;
 			color: var(--text);
-			overflow: hidden;
-			height: 100vh;
+			overflow-x: hidden;
+			overflow-y: auto;
+			min-height: 100vh;
 			margin: 0;
 			transition: background 8s ease-in-out;
 		}
@@ -490,10 +491,10 @@
 		/* ── BANNER (new — Playfair shimmer) ── */
 		.banner-wrap {
 			text-align: center;
-			padding: 80px 16px 8px;
+			padding: clamp(40px, 8vw, 80px) 16px 8px;
 			transform: translateY(-500px);
 			transition: none;
-			margin-bottom: 40px;
+			margin-bottom: clamp(16px, 4vw, 40px);
 		}
 
 		.banner-wrap.banner-come {
@@ -549,7 +550,7 @@
 
 		.banner-sub {
 			font-family: 'Nunito', sans-serif;
-			font-size: 17px;
+			font-size: clamp(13px, 3.5vw, 17px);
 			color: var(--soft-text);
 			margin-top: 6px;
 			font-weight: 300;
@@ -673,20 +674,25 @@
 		/* ── NEW CSS CAKE ── */
 		#cake-section {
 			display: none;
+			position: fixed;
+			bottom: 60px;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 50;
 			justify-content: center;
-			align-items: center;
-			padding: 20px 0 100px;
+			align-items: flex-end;
+			padding: 0;
 		}
 
 		.cake-wrap {
 			position: relative;
-			width: 180px;
+			width: clamp(140px, 45vw, 180px);
 			user-select: none;
 		}
 
 		.cake-tier-bottom {
-			width: 180px;
-			height: 70px;
+			width: 100%;
+			height: clamp(50px, 10vw, 70px);
 			background: linear-gradient(135deg, #ffd6e8, #ffb3cc);
 			border-radius: 12px 12px 4px 4px;
 			margin: 0 auto;
@@ -725,8 +731,8 @@
 		}
 
 		.cake-tier-mid {
-			width: 140px;
-			height: 55px;
+			width: 78%;
+			height: clamp(40px, 8vw, 55px);
 			background: linear-gradient(135deg, #e8d5ff, #d5b8f7);
 			border-radius: 10px 10px 3px 3px;
 			margin: 0 auto;
@@ -747,8 +753,8 @@
 		}
 
 		.cake-tier-top {
-			width: 100px;
-			height: 42px;
+			width: 56%;
+			height: clamp(32px, 6vw, 42px);
 			background: linear-gradient(135deg, #b8f0e6, #8dd9ce);
 			border-radius: 8px 8px 3px 3px;
 			margin: 0 auto;
@@ -880,15 +886,21 @@
 		/* ── MESSAGE ── */
 		.message {
 			display: none;
+			position: fixed;
+			bottom: 80px;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 60;
 			text-align: center;
-			padding: 50px 16px 100px;
+			padding: 0 16px;
 			max-width: 520px;
-			margin: 0 auto;
+			width: 100%;
+			margin: 0;
 		}
 
 		.message p {
 			font-family: 'Playfair Display', serif;
-			font-size: 30px;
+			font-size: clamp(18px, 5vw, 30px);
 			font-weight: bold;
 			display: none;
 			line-height: 1.5;
@@ -905,12 +917,12 @@
 
 		.message p.highlight {
 			font-family: 'Playfair Display', serif;
-			font-size: 34px;
+			font-size: clamp(20px, 5.5vw, 34px);
 			font-style: normal;
 		}
 
 		.message p.section-break {
-			font-size: 26px;
+			font-size: clamp(18px, 4.5vw, 26px);
 			padding: 8px 0;
 			-webkit-text-fill-color: initial;
 			background: none;
@@ -1082,21 +1094,25 @@
 			background: transparent;
 			backdrop-filter: none;
 			border-top: none;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			z-index: 100;
 		}
 
 		.btn-pastel {
-			padding: 9px 18px;
+			padding: clamp(7px, 2vw, 9px) clamp(12px, 3.5vw, 18px);
 			border: none;
 			border-radius: 30px;
 			font-family: 'Nunito', sans-serif;
-			font-size: 13px;
+			font-size: clamp(11px, 2.5vw, 13px);
 			font-weight: 700;
 			cursor: pointer;
 			transition: all 0.3s ease;
 			box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
 			color: white;
 			letter-spacing: 0.3px;
-			margin: 4px;
+			margin: 3px;
 		}
 
 		.btn-pastel:hover {
@@ -1163,6 +1179,50 @@
 		::-webkit-scrollbar-thumb {
 			background: var(--pink);
 			border-radius: 10px;
+		}
+
+		/* ── RESPONSIVE BREAKPOINTS ── */
+		@media (max-width: 600px) {
+			.bulb {
+				width: 32px;
+				height: 32px;
+				background-size: 32px 32px;
+			}
+			.bulb-holder {
+				height: 48px;
+			}
+			.balloons {
+				width: 58px;
+				height: 106px;
+				background-size: 58px 106px;
+				max-width: calc(100vw / 7 - 2px);
+			}
+			.balloons h2 {
+				font-size: 26px;
+				padding-top: 8px;
+			}
+			#cake-section {
+				padding-bottom: 80px;
+			}
+			.navbar-fixed-bottom .col-md-6 {
+				padding: 6px 4px;
+			}
+		}
+
+		@media (max-width: 380px) {
+			.btn-pastel {
+				padding: 6px 10px;
+				font-size: 10px;
+				margin: 2px;
+			}
+			.bulb {
+				width: 24px;
+				height: 24px;
+				background-size: 24px 24px;
+			}
+			.bulb-holder {
+				height: 38px;
+			}
 		}
 	</style>
 </head>
@@ -1354,7 +1414,7 @@
 					<p class="highlight">this is that moment.</p>
 					<p class="section-break">💕</p>
 					<p>Keep shining, keep laughing,</p>
-					<p>keep being exactly</p>i
+					<p>keep being exactly</p>
 					<p>who you are.</p>
 					<p>The world is genuinely better</p>
 					<p>with you in it.</p>
@@ -1425,11 +1485,15 @@
 			});
 
 			function repositionBalloons() {
-				vw = $(window).width() / 2;
-				var offsets = [-330, -220, -110, 0, 110, 220, 330];
+				var W = $(window).width();
+				var half = W / 2;
+				var maxOff = Math.min(330, Math.floor(W / 2) - 55);
+				var step = Math.round(maxOff / 3);
+				var offsets = [-3*step, -2*step, -step, 0, step, 2*step, 3*step];
+				var balloonTop = Math.round($(window).height() * 0.42);
 				var ids = ['#b11', '#b22', '#b33', '#b44', '#b55', '#b66', '#b77'];
 				ids.forEach(function (id, i) {
-					$(id).animate({ top: 230, left: vw + offsets[i] }, 500);
+					$(id).animate({ top: balloonTop, left: half + offsets[i] }, 500);
 				});
 			}
 
@@ -1522,9 +1586,15 @@
 				['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7'].forEach(function (id, i) {
 					$('#' + id).attr('id', 'b' + [11, 22, 33, 44, 55, 66, 77][i]);
 				});
-				var offsets = [-330, -220, -110, 0, 110, 220, 330];
+				var W = $(window).width();
+				var half = W / 2;
+				var maxOff = Math.min(330, Math.floor(W / 2) - 55);
+				var step = Math.round(maxOff / 3);
+				var offsets = [-3*step, -2*step, -step, 0, step, 2*step, 3*step];
+				// Position balloons in the lower-middle area, below the banner
+				var balloonTop = Math.round($(window).height() * 0.42);
 				['#b11', '#b22', '#b33', '#b44', '#b55', '#b66', '#b77'].forEach(function (id, i) {
-					$(id).animate({ top: 280, left: vw + offsets[i] }, 500);
+					$(id).animate({ top: balloonTop, left: half + offsets[i] }, 500);
 				});
 				$('.balloons').css('opacity', '0.9');
 				$('.balloons h2').fadeIn(3000);
